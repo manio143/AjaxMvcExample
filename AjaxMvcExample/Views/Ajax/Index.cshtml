@@ -1,0 +1,29 @@
+﻿<section>
+    <h3>Przykład użycia AJAX ASP.NET MVC</h3>
+</section>
+<section>
+    <div id="messages">
+
+    </div>
+
+    @using (Ajax.BeginForm("AjaxTest",
+    new AjaxOptions
+    {
+        Confirm = "Czy napewno chcesz wysłać wiadomość?",
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.InsertAfter,
+        UpdateTargetId = "messages",
+        OnComplete = "ajaxComplete"
+    }))
+    {
+        @Html.Label("message", "Wiadomość")<br />
+        @Html.TextArea("message")<br />
+        <button type="submit">Wyślij</button>
+    }
+
+    <script>
+        function ajaxComplete() {
+            alert("Complete");
+        }
+    </script>
+</section>
